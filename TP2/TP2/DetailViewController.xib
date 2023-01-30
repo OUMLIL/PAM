@@ -13,6 +13,7 @@
                 <outlet property="labelName" destination="5jZ-qG-PLE" id="ejn-Cn-sDu"/>
                 <outlet property="labelPopulation" destination="WIF-wu-LFt" id="S54-r2-LrR"/>
                 <outlet property="labelSuperficie" destination="Ytf-7M-Ly8" id="KNq-DY-BcA"/>
+                <outlet property="myButton" destination="Qq5-Sr-ZB6" id="dmB-SK-jK6"/>
                 <outlet property="view" destination="iN0-l3-epB" id="s0J-2V-EuX"/>
             </connections>
         </placeholder>
@@ -42,6 +43,25 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qq5-Sr-ZB6" colorLabel="IBBuiltInLabel-Orange">
+                    <rect key="frame" x="154" y="488" width="82" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" systemColor="tertiarySystemBackgroundColor"/>
+                    </state>
+                    <buttonConfiguration key="configuration" style="plain" title="Home">
+                        <backgroundConfiguration key="background">
+                            <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        </backgroundConfiguration>
+                        <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                        <color key="baseForegroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="buttonClick:" destination="-1" eventType="touchUpInside" id="YkW-Yf-HE3"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -50,6 +70,12 @@
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
