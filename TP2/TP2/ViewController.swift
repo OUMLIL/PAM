@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    let data = Regions.all
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,16 +19,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return data.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "This is row \(indexPath.row)"
-
+        cell.textLabel?.text = data[indexPath.row].nom
         return cell
     }
-
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     let selectedRegion = data[indexPath.row]
+     let viewController = DetailViewController()
+     viewController.region = selectedRegion
+     navigationController?.pushViewController(viewController, animated: true)
+     }
 }
+    
+
 
