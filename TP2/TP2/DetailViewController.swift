@@ -24,8 +24,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func buttonClick(_ sender: Any) {
-        let viewController = ViewController()
-        navigationController?.pushViewController(viewController, animated: true)
+        navigationController?.popViewController( animated: true)
     }
     
 }
