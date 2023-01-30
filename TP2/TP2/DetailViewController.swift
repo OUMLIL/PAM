@@ -9,10 +9,14 @@ import UIKit
 
 class DetailViewController: UIViewController {
     var region : Region!
-    @IBOutlet weak var Label: UILabel!
+    
+    @IBOutlet weak var labelSuperficie: UILabel!
+    @IBOutlet weak var labelPopulation: UILabel!
+    @IBOutlet weak var labelName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        Label.text = region.toString()
-        
+        labelName.text = "nom : \(region.nom)"
+        labelPopulation.text = "population : \(region.population)"
+        labelSuperficie.text = "sperficie : \(region.population)"
     }
 }

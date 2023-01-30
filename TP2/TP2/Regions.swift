@@ -16,10 +16,6 @@ struct Region {
     var densite:Float
     var codeInsee: Int
     var president:String
-    
-    func toString() -> String {
-        return "nom :\(self.nom)"
-    }
 }
 
 
