@@ -18,6 +18,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         labelName.text = "nom : \(region.nom)"
         labelPopulation.text = "population : \(region.population)"
         labelSuperficie.text = "sperficie : \(region.population)"
