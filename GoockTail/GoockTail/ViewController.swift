@@ -8,8 +8,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var cocktails = [Cocktail]()
-    
     @IBOutlet var LoadingView: UIView! {
         didSet {
             LoadingView.layer.cornerRadius = 6
@@ -22,11 +20,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        showSpinner()
-        Api().loadData { (cocktails) in
-            self.cocktails = cocktails
-        }
-        hideSpinner()
+        Api().loadData()
+        
     }
     
     private func showSpinner() {
