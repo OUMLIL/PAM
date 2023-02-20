@@ -8,7 +8,9 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    var region : Region!
+    var cooktail : Cocktail!
+    let imageView = UIImageView()
+    
     
     @IBOutlet weak var myButton: UIButton!
     @IBOutlet weak var labelSuperficie: UILabel!
@@ -19,13 +21,15 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        labelName.text = "nom : \(region.nom)"
-        labelPopulation.text = "population : \(region.population)"
-        labelSuperficie.text = "sperficie : \(region.population)"
+        labelName.text = "\(cooktail.strDrink)"
+        labelPopulation.text = "\(cooktail.strDrinkThumb)"
+        labelSuperficie.text = "\(cooktail.strInstructions)"
     }
     
     @IBAction func buttonClick(_ sender: Any) {
         navigationController?.popViewController( animated: true)
     }
+    
+    
     
 }

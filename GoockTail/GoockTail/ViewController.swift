@@ -7,35 +7,57 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
+    var data : [Cocktail] = []
     @IBOutlet var LoadingView: UIView! {
         didSet {
             LoadingView.layer.cornerRadius = 6
           }
     }
     
-    @IBOutlet weak var ActivityIndicator: UIActivityIndicatorView!
+   
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        Api().loadData()
-        
+//        startIndicatingActivity()
+        data = Api().loadData()
+////        stopIndicatingActivity()
+//        let viewController = DetailTableViewController()
+//        navigationController?.pushViewController(viewController, animated: true)
     }
     
-    private func showSpinner() {
-        ActivityIndicator.startAnimating()
-        LoadingView.isHidden = false
-
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return data.count
+        }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = data[indexPath.row].strDrink
+            return cell
     }
-
-    private func hideSpinner() {
-        ActivityIndicator.stopAnimating()
-        LoadingView.isHidden = true
-
-    }
-
-
+        
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+////     let selectedRegion = data[indexPath.row]
+////     let viewController = DetailViewController()
+////     viewController.region = selectedRegion
+////     navigationController?.pushViewController(viewController, animated: true)
+//     }
+    
+//    public func startIndicatingActivity() {
+//            DispatchQueue.main.async {
+//                self.activityIndicator.startAnimating()
+//            }
+//        }
+//
+//    public func stopIndicatingActivity() {
+//        DispatchQueue.main.async {
+//            self.activityIndicator.stopAnimating()
+//        }
+//    }
+    
 }
 
