@@ -23,9 +23,9 @@ struct Cocktail : Codable {
 
 
 class NetworkManager {
-    func fetchItems(completion: @escaping ([Cocktail]) -> Void) {
+    func fetchItems(cookName : String,completion: @escaping ([Cocktail]) -> Void) {
         var cocktails:[Cocktail] = []
-        let url = URL(string: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito")!
+        let url = URL(string: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=\(cookName)")!
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
             do {

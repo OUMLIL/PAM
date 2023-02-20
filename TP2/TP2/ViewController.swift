@@ -7,30 +7,36 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     var cocktails = [Cocktail]()
-
+    var cooktailName = "mojito"
+    @IBOutlet var searchBar: UISearchBar!
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        fetchItems()
+        fetchItems(searchText: cooktailName)
         tableView.delegate = self
         tableView.dataSource = self
+        
     }
     
-    func fetchItems() {
-           NetworkManager().fetchItems { (cocktails) in
+    func fetchItems(searchText : String) {
+           NetworkManager().fetchItems(cookName: cooktailName) { (cocktails) in
                self.cocktails = cocktails
                DispatchQueue.main.async {
                    self.tableView.reloadData()
                }
            }
     }
-       
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        cooktailName = searchText
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cocktails.count
