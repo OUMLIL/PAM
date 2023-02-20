@@ -9,8 +9,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
     var cooktail : Cocktail!
-    let imageView = UIImageView()
     
+    @IBOutlet var imageView: UIImageView!
     
     @IBOutlet weak var myButton: UIButton!
     @IBOutlet weak var labelSuperficie: UILabel!
@@ -20,9 +20,18 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        somecall()
+        view.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: 200),
+            imageView.heightAnchor.constraint(equalToConstant: 200)
+        ])
+        
         
         labelName.text = "\(cooktail.strDrink)"
-        labelPopulation.text = "\(cooktail.strDrinkThumb)"
         labelSuperficie.text = "\(cooktail.strInstructions)"
     }
     
@@ -30,6 +39,24 @@ class DetailViewController: UIViewController {
         navigationController?.popViewController( animated: true)
     }
     
-    
-    
+    func somecall() {
+        guard let url = URL(string: cooktail.strDrinkThumb) else { return }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Error loading image: \(error)")
+                return
+            }
+
+            guard let data = data else {
+                print("No data found")
+                return
+            }
+
+            DispatchQueue.main.async {
+                self.imageView.image = UIImage(data: data)
+            }
+        }.resume()
+
+    }
 }
